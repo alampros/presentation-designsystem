@@ -7,6 +7,9 @@
     "stage-0",
     "react"
   ],
+  "plugins": [
+    "import-glob"
+  ],
   "env": {
     "development": {
       "plugins": [

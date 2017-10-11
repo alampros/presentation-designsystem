@@ -1,5 +1,6 @@
 const path = require('path')
 const webpack = require('webpack')
+const DirectoryNamedWebpackPlugin = require('directory-named-webpack-plugin')
 
 module.exports = {
   devtool: 'cheap-module-source-map',
@@ -17,6 +18,14 @@ module.exports = {
     filename: 'bundle.js',
     publicPath: '/dist/'
   },
+  resolve: {
+    plugins: [
+      new DirectoryNamedWebpackPlugin({
+        honorIndex: true,
+        exclude: /node_modules/,
+      }),
+    ],
+  },
   plugins: [
     new webpack.NormalModuleReplacementPlugin(
       /\.\.\/store/,
@@ -30,7 +39,15 @@ module.exports = {
     rules: [
       {
         test: /\.md$/,
-        loader: 'html-loader!markdown-loader?gfm=false'
+        use: [
+          'html-loader',
+          {
+            loader: 'markdown-loader',
+            options: {
+              gfm: false,
+            },
+          },
+        ],
       },
       {
         test: /\.(js|jsx)$/,
@@ -43,25 +60,17 @@ module.exports = {
         include: __dirname
       },
       {
-        test: /\.svg$/,
-        loader: 'url-loader?limit=10000&mimetype=image/svg+xml',
+        test: /\.(png|jpg|gif|svg)$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 100000,
+            }
+          },
+        ],
         include: path.join(__dirname, 'src')
       },
-      {
-        test: /\.png$/,
-        loader: 'url-loader?mimetype=image/png',
-        include: path.join(__dirname, 'src')
-      },
-      {
-        test: /\.gif$/,
-        loader: 'url-loader?mimetype=image/gif',
-        include: path.join(__dirname, 'src')
-      },
-      {
-        test: /\.jpg$/,
-        loader: 'url-loader?mimetype=image/jpg',
-        include: path.join(__dirname, 'src')
-      }
     ]
   }
 }

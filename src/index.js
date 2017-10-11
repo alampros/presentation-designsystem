@@ -23,6 +23,7 @@ import {
   List,
   ListItem,
   Notes,
+  Markdown,
   Quote,
   S,
   Slide,
@@ -41,6 +42,7 @@ import createTheme from 'spectacle/lib/themes/default'
 import './styles.css'
 
 import ConfusingDiagrams from './ConfusingDiagrams'
+import ButtonStorm from './ButtonStorm'
 
 const theme = createTheme({
   primary: 'white',
@@ -79,6 +81,15 @@ export default class Presentation extends React.Component {
           <ConfusingDiagrams />
         </Slide>
         <Slide bgColor="secondary" transition={['slide', 'spin']}>
+          <Notes>
+            <Markdown>{`
+From **Defining Design Systems**
+- Super broad
+- Super vague
+- Key words "efficient" and "cohesive"
+`}
+            </Markdown>
+          </Notes>
           <BlockQuote>
             <Quote textSize="2rem" style={{ lineHeight: 1.5 }} textColor="white">
               A <S type="bold" textColor="tertiary">design system</S> offers a library of
@@ -88,7 +99,7 @@ export default class Presentation extends React.Component {
               <Appear><span> as code and design tools</span></Appear>
               <Appear>
                 <span> so that adopting products can be more
-                  <S type="underline"> efficient</S> and <S type="underline">cohesive.</S>
+                  <S type="italic"> efficient</S> and <S type="italic">cohesive.</S>
                 </span>
               </Appear>
             </Quote>
@@ -99,6 +110,9 @@ export default class Presentation extends React.Component {
         </Slide>
         <Slide>
           <Heading fit>Why do we need one?</Heading>
+        </Slide>
+        <Slide>
+          <ButtonStorm />
         </Slide>
         <Slide>
           <Heading fit>How close are we?</Heading>
