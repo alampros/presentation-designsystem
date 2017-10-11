@@ -18,6 +18,10 @@ module.exports = {
     publicPath: '/dist/'
   },
   plugins: [
+    new webpack.NormalModuleReplacementPlugin(
+      /\.\.\/store/,
+      path.resolve(__dirname, 'overrides/store.js')
+    ),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
     new webpack.NoEmitOnErrorsPlugin()
