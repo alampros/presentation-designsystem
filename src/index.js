@@ -1,9 +1,9 @@
+/* eslint-disable jsx-a11y/accessible-emoji, react/jsx-curly-brace-presence */
 import 'prismjs'
 import 'prismjs/components/prism-jsx'
 import 'prismjs/themes/prism-tomorrow.css'
 import 'normalize.css'
 import 'spectacle/lib/themes/default/index.css'
-
 import React from 'react'
 
 /* eslint-disable no-unused-vars */
@@ -24,6 +24,7 @@ import {
   ListItem,
   Notes,
   Markdown,
+  MarkdownSlides,
   Quote,
   S,
   Slide,
@@ -39,10 +40,14 @@ import {
 
 import createTheme from 'spectacle/lib/themes/default'
 
+import imgQrQuestionnaire from './img/qr-questionnaire-link.png'
+import imgQrPartsProductsPeople from './img/qr-picking-parts-products-people.png'
+
 import './styles.css'
 
 import ConfusingDiagrams from './ConfusingDiagrams'
 import ButtonStorm from './ButtonStorm'
+import Confetti from './Confetti'
 
 const theme = createTheme({
   primary: 'white',
@@ -65,7 +70,11 @@ export default class Presentation extends React.Component {
         transition={['fade']}
         theme={theme}
         contentHeight={800}
+        contentWidth={1600}
       >
+        <Slide>
+          📺
+        </Slide>
         <Slide bgColor="primary">
           <Heading size={1} fit caps lineHeight={1} textColor="secondary">
             Design System
@@ -90,7 +99,7 @@ From **Defining Design Systems**
 `}
             </Markdown>
           </Notes>
-          <BlockQuote>
+          <BlockQuote style={{ maxWidth: 900 }}>
             <Quote textSize="2rem" style={{ lineHeight: 1.5 }} textColor="white">
               A <S type="bold" textColor="tertiary">design system</S> offers a library of
               <Appear><span> visual style</span></Appear><Appear><span>, components</span></Appear>
@@ -109,14 +118,62 @@ From **Defining Design Systems**
           </BlockQuote>
         </Slide>
         <Slide>
-          <Heading fit>Why do we need one?</Heading>
+          <Heading margin="0 0px 1em" fit>Why do we need one?</Heading>
+          <Appear>
+            <Text textColor="secondary">(not for this meeting)</Text>
+          </Appear>
         </Slide>
         <Slide>
+          <Notes>
+            <Markdown>{`
+- Excercise wherein we picked one element
+- These are just the buttons
+- We have buttons. Lots of buttons.
+- Not just confusing for users
+- **Inefficient**
+  - Costs design hours
+  - Costs development hours
+  - Costs network bandwidth
+- **Incoherent**
+  - manage expectations
+  - learning
+`}
+            </Markdown>
+          </Notes>
           <ButtonStorm />
         </Slide>
         <Slide>
-          <Heading fit>How close are we?</Heading>
+          <Heading size={2}>Definition</Heading>
         </Slide>
+        <Slide>
+          <Notes>
+            <Markdown>{`
+- Our design system offers [scope]
+- released as  [outputs]
+- and documented at [doc site]
+- produced by [people]
+- in order to serve [products]
+- products and experiences.
+`}
+            </Markdown>
+          </Notes>
+          <Text margin="1em 0">Our design system offers <Code>{'{scope}'}</Code></Text>
+          <Appear><Text margin="1em 0">released as <Code>{'{outputs}'}</Code></Text></Appear>
+          <Appear><Text margin="1em 0">and documented at <Code>{'{doc site}'}</Code></Text></Appear>
+          <Appear><Text margin="1em 0">produced by <Code>{'{people}'}</Code></Text></Appear>
+          <Appear><Text margin="1em 0">in order to serve <Code>{'{products}'}</Code></Text></Appear>
+        </Slide>
+        <Slide>
+          <Heading size={2} margin="0 0 1em">Front-end Questionnaire</Heading>
+          <Link target="_blank" href="https://github.com/bradfrost/frontend-guidelines-questionnaire/">github.com/bradfrost/frontend-guidelines-questionnaire</Link>
+          <Image src={imgQrQuestionnaire} display="block" />
+        </Slide>
+        <Slide>
+          <Heading size={2} margin="0 0 1em">Parts, Products, &amp; People</Heading>
+          <Link target="_blank" href="https://medium.com/eightshapes-llc/picking-parts-products-people-a06721e81742">medium.com/eightshapes-llc/picking-parts-products-people-a06721e81742</Link>
+          <Image src={imgQrPartsProductsPeople} display="block" />
+        </Slide>
+        <Confetti />
       </Deck>
     )
   }

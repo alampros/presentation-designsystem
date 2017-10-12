@@ -38,16 +38,8 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.md$/,
-        use: [
-          'html-loader',
-          {
-            loader: 'markdown-loader',
-            options: {
-              gfm: false,
-            },
-          },
-        ],
+        test: /doc\/.*\.md$/,
+        loader: 'raw-loader',
       },
       {
         test: /\.(js|jsx)$/,
