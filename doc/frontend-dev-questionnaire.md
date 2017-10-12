@@ -3,8 +3,6 @@ A one-page questionnaire to help your team establish effective frontend guidelin
 
 > https://github.com/bradfrost/frontend-guidelines-questionnaire/
 
----
-
 # HTML
 ### HTML Principles
 - **What are some general principles your team should follow when writing HTML?** *(for example, authoring semantic HTML5 markup, accessibility, etc. See [these](http://www.yellowshoe.com.au/standards/#html) [resources](http://codeguide.co/#html) for [inspiration](http://manuals.gravitydept.com/code/html))*
@@ -15,9 +13,27 @@ A one-page questionnaire to help your team establish effective frontend guidelin
 - **Are you using a templating engine** *(such as [Mustache](https://mustache.github.io/), [Handlebars](http://handlebarsjs.com/), etc)*?
 - **Does your backend architecture influence the frontend markup in any way** (for example, WordPress will add `wp-paginate` to a class in your markup)? If so, can you highlight these conventions? 
 
+> Handlebars
+
+> Some leftover underscore templating
+
+> Vue.js templates
+
+> *Cargille* (in-house, lightweight backbone.js)
+
 ### HTML Style
 - **Spaces or Tabs?**
 - **What does HTML commenting look like?** 
+
+> Mostly server rendered
+
+> Vue.js linter, yes
+
+> Handlebars no
+
+> Tabs over spaces
+
+> Twig templates in CMS
 
 ---
 
@@ -26,9 +42,24 @@ A one-page questionnaire to help your team establish effective frontend guidelin
 ### CSS Principles
 - **What are some general principles your team should follow when writing CSS?** *(For example, modularity, avoiding long selector strings, etc. See [these](http://cssguidelin.es/) [resources](http://www.yellowshoe.com.au/standards/#css) [for](http://manuals.gravitydept.com/code/css) [inspiration](http://codeguide.co/#css))*
 
+> Documented in internal tools (Ben to send)
+
 ### CSS Methodology
 - **Is your team using a CSS methodology** *(such as [SMACSS](https://smacss.com/), [BEM](https://en.bem.info/method/), or [OOCSS](http://oocss.org/))*? If yes, where is the documentation for that methodology?
 - **Are you deviating from the methodology in any way?** If so, can you highlight these conventions?
+
+> B2C uses BEM
+
+> V6 - using the custom component styling structure
+
+> DRSGv3 - Using Vue scoped styles
+
+### CSS Location
+
+- **Are styles colocated with components?**
+
+> All Vue styles are, except branded elements
+
 
 ### CSS Tools
 - **Is the team using a preprocessor** *(such as [Sass](http://sass-lang.com/) or [Less](http://lesscss.org/))*?
@@ -37,15 +68,33 @@ A one-page questionnaire to help your team establish effective frontend guidelin
 - **Are you using any CSS postprocessors** *(such as [Prefixfree](https://leaverou.github.io/prefixfree/) or [Autoprefixer](https://github.com/postcss/autoprefixer))*?
 - **Are there specific CSS techniques you're utilizing** *(such as [critical CSS](https://www.smashingmagazine.com/2015/08/understanding-critical-css/))*?
 
+> B2Cv3 + DRSGv3: Vue (scoped styles), SCSS (bootstrap v4), autoprefixer
+
+> B2Cv2: Less
+
+> B2Cv1: POCSS w/ reset.css
+
 ### CSS Frameworks
 - **Is the team using a framework** *(such as [Bootstrap](https://getbootstrap.com/) or [Foundation](http://foundation.zurb.com/))*? If yes, where is the documentation for that framework?
 - **Are you deviating from the framework in any way?** If so, can you highlight these conventions?
+
+> B2Cv3: Bootstrap v4
+
+> DRSGv3: Bootsrap v4
+
+> B2Cv2: Bootstrap v3
+
+> B2Cv1: POCSS
+
+> Customize bootstrap variables
 
 ### CSS Style
 - **Spaces or Tabs?**
 - **Spacing around rules?**
 - **[Grouping](https://smacss.com/book/formatting#grouping) properties?**
 - **What does CSS commenting look like?** 
+
+> Covered in systems docs (Ben to send)
 
 ---
 
@@ -62,6 +111,39 @@ A one-page questionnaire to help your team establish effective frontend guidelin
 - **What third-party scripts are dependencies for your project** *(such as scripts for form validation, graphs, animation, etc)*?
 - **Do you test your JavaScript?** If so, what tools do you use *(such as [Jasmine](https://jasmine.github.io/), [Karma](https://github.com/karma-runner/karma), [Selenium](http://docs.seleniumhq.org/), etc)*?
 
+#### Bundlers
+> B2Cv3: Webpack (v3 JS only), internal Sasspack (Dustin) handles styles
+
+> B2Bv6: Webpack (v1 JS only), `packless` for modular styles, `leonard` handles theme styles
+
+> DRSGv3: Webpack (v3 JS, CSS + autoprexer to separate bundle), `leonard` for themes
+
+#### Dependencies
+> npm accross the board (artifactory)
+
+> DT scoped packages (`@dealertire/package`) served locally, mirror externals from registry.npmjs.org
+
+> CSS deps all imported from local cached
+
+#### Polyfills/Shims
+
+> B2Cv3: `promises (bluebird)`, `buble` 
+
+> B2Bv6: position sticky
+
+> DRSGv3: `babel-polyfill`, position sticky
+
+#### Testing
+
+> B2Cv3: Karma + TAP
+
+> B2Bv6: Karma + mocha, chai, sinon. Coverage: istanbul
+
+> DRSGv3: Karma + mocha, chai, sinon
+
+> E2E?
+
+
 ### JavaScript Style 
 *(See [these](https://github.com/airbnb/javascript) [resources](https://github.com/rwaldron/idiomatic.js) for [inspiration](https://github.com/styleguide/javascript))*
 - **Spaces or Tabs?**
@@ -75,12 +157,26 @@ A one-page questionnaire to help your team establish effective frontend guidelin
 - **How are you handling responsive images** *(such as using `srcset` & `<picture />`)*?
 - **Are you using any [tools](https://addyosmani.com/blog/image-optimization-tools/) to optimize and serve images**?
 
+#### Icons
+
+> B2Cv3: via grunt webfont icons
+
+> B2Bv6: via webfont icons
+
+> DRSGv3: noneso
+
+> Everywhere else: png sprites
+
 ---
 
 ## Fonts
 - **How do you load custom fonts?**
 - **Do you use any tools to help implement web fonts** *(such as [Font Squirrel](https://www.fontsquirrel.com/), etc)*?
 - **Do you use a service to manage and serve custom fonts** *(such as [Fonts.com](https://www.fonts.com/), [Typekit](https://typekit.com/), etc)*?
+
+> Hosted locally (now), straight css `@import`
+
+> Helvetica special snowflake
 
 
 ---
@@ -91,6 +187,13 @@ A one-page questionnaire to help your team establish effective frontend guidelin
 - **What techniques are you using to decrease file size** *(such as [Gzip](https://css-tricks.com/snippets/htaccess/active-gzip-compression/), [Image Optimization](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/image-optimization))*?
 - **What performance-related tools are you using in your workflow?** *(such as [WebPagetest](http://www.webpagetest.org/), [BigRig](https://aerotwist.com/blog/bigrig/) [Speedcurve](https://speedcurve.com/))*?
 
+> B2Cv3: 
+
+> B2Bv6: 
+
+> DRSGv3: 
+
+> Everywhere else: 
 
 ---
 
@@ -144,6 +247,16 @@ It's important to recognize the difference between ["support" and "optimization"
 - **Who's responsible for maintaining and governing the documentation?**
 - **What happens when the guidelines are updated?**
 
----
 
-*Feel free to modify or extend (such as adding specific sections for performance, accessibility, etc) this document for your own organization's needs. For questions, comments, additions, and corrections, please open an issue on Github and/or reach out to [@brad_frost](https://twitter.com/brad_frost) on Twitter.*
+
+
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+
+----
+
+
+#### Scratch
+
+- V5 reusable components was a pipe dream/nightmare
+- Internal apps team underrepresented - invite Garret or Rob Blank
+- Collaborate?
