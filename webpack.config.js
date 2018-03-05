@@ -52,7 +52,7 @@ module.exports = {
         include: __dirname
       },
       {
-        test: /\.(png|jpg|gif|svg)$/,
+        test: /\.(png|jpg|gif|svg|mp4)$/,
         use: [
           {
             loader: 'url-loader',

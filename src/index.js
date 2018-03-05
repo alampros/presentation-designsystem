@@ -40,8 +40,8 @@ import {
 
 import createTheme from 'spectacle/lib/themes/default'
 
-import imgQrQuestionnaire from './img/qr-questionnaire-link.png'
-import imgQrPartsProductsPeople from './img/qr-picking-parts-products-people.png'
+import imgUmbrella from './img/umbrella.png'
+import videoRalph from './img/ralph.mp4'
 
 import './styles.css'
 
@@ -64,6 +64,17 @@ const theme = createTheme({
 
 export default class Presentation extends React.Component {
   render() {
+    const $vdiv = (
+      <span
+        style={{
+          display: 'inline-block',
+          width: '2px',
+          height: '100%',
+          borderRight: '1px solid gray',
+          transform: 'scale(0.25, 1)'
+        }}
+      >&nbsp;</span>
+    )
     return (
       <Deck
         transitionDuration={1000}
@@ -80,7 +91,7 @@ export default class Presentation extends React.Component {
             Design System
           </Heading>
           <Text textColor="tertiary" fit caps>
-            Definitions, Requirements, &amp; Scope
+            Progress Update {$vdiv} March, 2018
           </Text>
         </Slide>
         <Slide bgColor="tertiary">
@@ -107,7 +118,8 @@ From **Defining Design Systems**
               <Appear><span> documented and released by an individual, team or community</span></Appear>
               <Appear><span> as code and design tools</span></Appear>
               <Appear>
-                <span> so that adopting products can be more
+                <span>
+                  &nbsp;so that adopting products can be more
                   <S type="italic"> efficient</S> and <S type="italic">cohesive.</S>
                 </span>
               </Appear>
@@ -118,9 +130,9 @@ From **Defining Design Systems**
           </BlockQuote>
         </Slide>
         <Slide>
-          <Heading margin="0 0px 1em" fit>Why do we need one?</Heading>
+          <Heading margin="0 0px 1em" fit>UI Inventory</Heading>
           <Appear>
-            <Text textColor="secondary">(not for this meeting)</Text>
+            <Text textColor="secondary">(audit)</Text>
           </Appear>
         </Slide>
         <Slide>
@@ -162,16 +174,271 @@ From **Defining Design Systems**
           <Appear><Text margin="1em 0">and documented at <Code>{'{doc site}'}</Code></Text></Appear>
           <Appear><Text margin="1em 0">produced by <Code>{'{people}'}</Code></Text></Appear>
           <Appear><Text margin="1em 0">in order to serve <Code>{'{products}'}</Code></Text></Appear>
+          <Cite>Jeremy Keith / Alla Kholmatavo</Cite>
         </Slide>
         <Slide>
-          <Heading size={2} margin="0 0 1em">Front-end Questionnaire</Heading>
-          <Link target="_blank" href="https://github.com/bradfrost/frontend-guidelines-questionnaire/">github.com/bradfrost/frontend-guidelines-questionnaire</Link>
-          <Image src={imgQrQuestionnaire} display="block" />
+          <Text margin="1em 0">Our design system offers <Code>{'{scope}'}</Code></Text>
+          <hr />
+          <Image src={imgUmbrella} display="block" />
+          <Text margin="1em 0">&nbsp;</Text>
+          <Text margin="1em 0">&nbsp;</Text>
+          <Text margin="1em 0">&nbsp;</Text>
+          <Text margin="1em 0">&nbsp;</Text>
         </Slide>
         <Slide>
-          <Heading size={2} margin="0 0 1em">Parts, Products, &amp; People</Heading>
-          <Link target="_blank" href="https://medium.com/eightshapes-llc/picking-parts-products-people-a06721e81742">medium.com/eightshapes-llc/picking-parts-products-people-a06721e81742</Link>
-          <Image src={imgQrPartsProductsPeople} display="block" />
+          <Text margin="1em 0" style={{ opacity: 0.33 }}>Our design system offers <Code>{'{scope}'}</Code></Text>
+          <Text margin="1em 0">released as <Code>{'{outputs}'}</Code></Text>
+          <hr />
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHeaderItem>Code Packages</TableHeaderItem>
+                <TableHeaderItem>Design Assets</TableHeaderItem>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <Appear><TableItem>Design Tokens</TableItem></Appear>
+                <TableItem style={{ opacity: 0 }}>Adobe Color Swatches</TableItem>
+              </TableRow>
+              <TableRow>
+                <Appear><TableItem>Language Tokens</TableItem></Appear>
+                <TableItem style={{ opacity: 0 }}>Sketch Symbol Libraries</TableItem>
+              </TableRow>
+              <TableRow>
+                <Appear><TableItem>Iconography</TableItem></Appear>
+                <TableItem style={{ opacity: 0 }}>OS Color Profiles</TableItem>
+              </TableRow>
+              <TableRow>
+                <Appear><TableItem>Components</TableItem></Appear>
+                <TableItem style={{ opacity: 0 }}>Custom Dictionaries</TableItem>
+              </TableRow>
+            </TableBody>
+          </Table>
+          <Text margin="1em 0">&nbsp;</Text>
+          <Text margin="1em 0">&nbsp;</Text>
+          <Text margin="1em 0">&nbsp;</Text>
+        </Slide>
+        <Slide>
+          <Text margin="1em 0" style={{ opacity: 0.33 }}>Our design system offers <Code>{'{scope}'}</Code></Text>
+          <Text margin="1em 0">released as <Code>{'{outputs}'}</Code></Text>
+          <hr />
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHeaderItem>Code Packages</TableHeaderItem>
+                <TableHeaderItem>Design Assets</TableHeaderItem>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableItem>Design Tokens</TableItem>
+                <Appear><TableItem>Adobe Color Swatches</TableItem></Appear>
+              </TableRow>
+              <TableRow>
+                <TableItem>Language Tokens</TableItem>
+                <Appear><TableItem>Sketch Symbol Libraries</TableItem></Appear>
+              </TableRow>
+              <TableRow>
+                <TableItem>Iconography</TableItem>
+                <Appear><TableItem>OS Color Profiles</TableItem></Appear>
+              </TableRow>
+              <TableRow>
+                <TableItem>Components</TableItem>
+                <Appear><TableItem>Custom Dictionaries</TableItem></Appear>
+              </TableRow>
+            </TableBody>
+          </Table>
+          <Text margin="1em 0">&nbsp;</Text>
+          <Text margin="1em 0">&nbsp;</Text>
+          <Text margin="1em 0">&nbsp;</Text>
+        </Slide>
+        <Slide>
+          <Text margin="1em 0" style={{ opacity: 0.33 }}>Our design system offers <Code>{'{scope}'}</Code></Text>
+          <Text margin="1em 0">released as <Code>{'{outputs}'}</Code></Text>
+          <hr />
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHeaderItem>Code Packages</TableHeaderItem>
+                <TableHeaderItem>Design Assets</TableHeaderItem>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              <TableRow>
+                <TableItem style={{ color: 'green' }}>Design Tokens</TableItem>
+                <TableItem style={{ color: 'green' }}>Adobe Color Swatches</TableItem>
+              </TableRow>
+              <TableRow>
+                <TableItem style={{ color: 'gray' }}>Language Tokens</TableItem>
+                <TableItem style={{ color: 'green' }}>Sketch Symbol Libraries</TableItem>
+              </TableRow>
+              <TableRow>
+                <TableItem style={{ color: 'green' }}>Iconography</TableItem>
+                <TableItem style={{ color: 'green' }}>OS Color Profiles</TableItem>
+              </TableRow>
+              <TableRow>
+                <TableItem style={{ color: 'gray' }}>Components</TableItem>
+                <TableItem style={{ color: 'gray' }}>Custom Dictionaries</TableItem>
+              </TableRow>
+            </TableBody>
+          </Table>
+          <Text margin="1em 0">&nbsp;</Text>
+          <Text margin="1em 0">&nbsp;</Text>
+          <Text margin="1em 0">&nbsp;</Text>
+        </Slide>
+        <Slide>
+          <Notes>
+            <Markdown>{`
+`}
+            </Markdown>
+          </Notes>
+          <Text margin="1em 0" style={{ opacity: 0.33 }}>Our design system offers <Code>{'{scope}'}</Code></Text>
+          <Text margin="1em 0" style={{ opacity: 0.33 }}>released as <Code>{'{outputs}'}</Code></Text>
+          <Text margin="1em 0">and documented at <Code>{'{doc site}'}</Code></Text>
+          <Text margin="1em 0" style={{ opacity: 0.33 }}>produced by <Code>{'{people}'}</Code></Text>
+          <Text margin="1em 0" style={{ opacity: 0.33 }}>in order to serve <Code>{'{products}'}</Code></Text>
+        </Slide>
+        <Slide style={{ marginTop: '-100px' }}>
+          <Notes>
+            <Markdown>{`
+`}
+            </Markdown>
+          </Notes>
+          <Text margin="1em 0" style={{ opacity: 0.33 }}>Our design system offers <Code>{'{scope}'}</Code></Text>
+          <Text margin="1em 0" style={{ opacity: 0.33 }}>released as <Code>{'{outputs}'}</Code></Text>
+          <Text margin="1em 0">and documented at <Code>{'{doc site}'}</Code></Text>
+          <hr />
+          <List style={{ display: 'inline-block' }}>
+            <Appear><ListItem>Internal URI</ListItem></Appear>
+            <Appear><ListItem>External CMS</ListItem></Appear>
+            <Appear><ListItem>Statically Generated HTML</ListItem></Appear>
+          </List>
+        </Slide>
+        <Slide>
+          <Notes>
+            <Markdown>{`
+`}
+            </Markdown>
+          </Notes>
+          <Text margin="1em 0" style={{ opacity: 0.10 }}>Our design system offers <Code>{'{scope}'}</Code></Text>
+          <Text margin="1em 0" style={{ opacity: 0.20 }}>released as <Code>{'{outputs}'}</Code></Text>
+          <Text margin="1em 0" style={{ opacity: 0.33 }}>and documented at <Code>{'{doc site}'}</Code></Text>
+          <Text margin="1em 0">produced by <Code>{'{people}'}</Code></Text>
+          <Text margin="1em 0" style={{ opacity: 0.33 }}>in order to serve <Code>{'{products}'}</Code></Text>
+        </Slide>
+        <Slide>
+          <Notes>
+            <Markdown>{`
+`}
+            </Markdown>
+          </Notes>
+          <div style={{ transform: 'translateY(-250px)' }}>
+            <Text margin="1em 0" style={{ opacity: 0.1 }}>Our design system offers <Code>{'{scope}'}</Code></Text>
+            <Text margin="1em 0" style={{ opacity: 0.2 }}>released as <Code>{'{outputs}'}</Code></Text>
+            <Text margin="1em 0" style={{ opacity: 0.33 }}>and documented at <Code>{'{doc site}'}</Code></Text>
+            <Text margin="1em 0">produced by <Code>{'{people}'}</Code></Text>
+            <hr style={{ margin: '2em 0' }} />
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHeaderItem>Currently</TableHeaderItem>
+                  <TableHeaderItem>Ideally</TableHeaderItem>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                <TableRow>
+                  <Appear><TableItem>Me</TableItem></Appear>
+                  <TableItem style={{ opacity: 0 }}>X-Func Team</TableItem>
+                </TableRow>
+                <TableRow>
+                  <Appear>
+                    <TableItem>
+                      <video
+                        src={videoRalph}
+                        autoPlay
+                        loop
+                        width={480}
+                        height={360}
+                      />
+                    </TableItem>
+                  </Appear>
+                  <TableItem />
+                </TableRow>
+              </TableBody>
+            </Table>
+          </div>
+        </Slide>
+        <Slide>
+          <Notes>
+            <Markdown>{`
+`}
+            </Markdown>
+          </Notes>
+          <div style={{ transform: 'translateY(-250px)' }}>
+            <Text margin="1em 0" style={{ opacity: 0.1 }}>Our design system offers <Code>{'{scope}'}</Code></Text>
+            <Text margin="1em 0" style={{ opacity: 0.2 }}>released as <Code>{'{outputs}'}</Code></Text>
+            <Text margin="1em 0" style={{ opacity: 0.33 }}>and documented at <Code>{'{doc site}'}</Code></Text>
+            <Text margin="1em 0">produced by <Code>{'{people}'}</Code></Text>
+            <hr style={{ margin: '2em 0' }} />
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHeaderItem>Currently</TableHeaderItem>
+                  <TableHeaderItem>Ideally</TableHeaderItem>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                <TableRow>
+                  <TableItem>Me</TableItem>
+                  <TableItem>X-Func Team</TableItem>
+                </TableRow>
+                <TableRow>
+                  <TableItem style={{ opacity: 0 }}>
+                    <video
+                      src={videoRalph}
+                      autoPlay
+                      loop
+                      width={480}
+                      height={360}
+                    />
+                  </TableItem>
+                  <TableItem>
+                    <List style={{ display: 'inline-block' }}>
+                      <ListItem>Product</ListItem>
+                      <ListItem>UX</ListItem>
+                      <ListItem>Development</ListItem>
+                      <ListItem>Creative</ListItem>
+                    </List>
+                  </TableItem>
+                </TableRow>
+              </TableBody>
+            </Table>
+          </div>
+        </Slide>
+        <Slide>
+          <Notes>
+            <Markdown>{`
+`}
+            </Markdown>
+          </Notes>
+          <div style={{ transform: 'translateY(-250px)' }}>
+            <Text margin="1em 0" style={{ opacity: 0.33 }}>Our design system offers <Code>{'{scope}'}</Code></Text>
+            <Text margin="1em 0" style={{ opacity: 0.33 }}>released as <Code>{'{outputs}'}</Code></Text>
+            <Text margin="1em 0" style={{ opacity: 0.33 }}>and documented at <Code>{'{doc site}'}</Code></Text>
+            <Text margin="1em 0" style={{ opacity: 0.33 }}>produced by <Code>{'{people}'}</Code></Text>
+            <Text margin="1em 0">in order to serve <Code>{'{products}'}</Code></Text>
+            <hr style={{ margin: '2em 0' }} />
+            <List style={{ display: 'inline-block' }}>
+              <Appear><ListItem>B2B Ordering Portal</ListItem></Appear>
+              <Appear><ListItem>DRSG &amp; Inspections</ListItem></Appear>
+              <Appear><ListItem>RightTurn</ListItem></Appear>
+              <Appear><ListItem>OTS</ListItem></Appear>
+              <Appear><ListItem>eServices</ListItem></Appear>
+              <Appear><ListItem>Creative Services Projects</ListItem></Appear>
+              <Appear><ListItem>Internal Design Projects</ListItem></Appear>
+            </List>
+          </div>
         </Slide>
         <Confetti />
       </Deck>
